@@ -49,7 +49,7 @@ public class UsuarioController {
 	@PostMapping("registro")
 	public String registrar(@ModelAttribute Usuario u) {
 		Usuario temp = userServ.registrarUsuario(u.getNombre(), u.getEmail(), u.getPassword());
-		return temp == null ? "error_page" : "redirect:/index";
+		return temp == null ? "error_page" : "redirect:/";
 	}
 	
 	@PostMapping("login")

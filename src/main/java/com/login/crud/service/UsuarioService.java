@@ -17,12 +17,12 @@ public class UsuarioService {
 		return userRepo.save(u);
 	}
 	
-	public Usuario registrarUsuario(String password, String email, String nombre) {
+	public Usuario registrarUsuario(String nombre, String email, String password) {
 		if(password != null && email !=null) {
 			Usuario temp = new Usuario();
+			temp.setNombre(nombre);
 			temp.setEmail(email);
 			temp.setPassword(password);
-			temp.setNombre(nombre);
 			return userRepo.save(temp);
 		}else {
 			return null;

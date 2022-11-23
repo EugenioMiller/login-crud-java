@@ -16,8 +16,8 @@
 		<!-- end header -->
 
 		<div class="row" id="form">
-			<form method="post" action="/registro" th:object="${registerRequest}">
-				<input type="text" placeholder="Nombre" name="nombre">
+			<form method="post" action="/api/usuario/registro" th:object="${registerRequest}">
+				<input type="text" placeholder="Nombre" name="nombre" required>
 				<input type="text" placeholder="Email" name="email" required>
 				<input type="password" placeholder="Password" name="password" required>
 

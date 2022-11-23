@@ -32,4 +32,9 @@ public class PersonaService {
 	public Optional<Persona> getById(Long id) {
 		return personRepo.findById(id);
 	}
+
+	public void delete(Long id) {
+		personRepo.deleteById(id);
+	}
+
 }

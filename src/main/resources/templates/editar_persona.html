@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Página de editar persona</title>
+	<link href="/css/registro.css" rel="stylesheet" />
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="row" id="header">
+			<i class="icon ion-ios-people-outline"></i>
+			<h1>Editar persona</h1>
+		</div>
+		<!-- end header -->
+
+		<div class="row" id="form" >
+			<form method="post" th:object="${persona}" action="/api/persona/nueva" >
+				<input type="number" name="nombre" th:field="*{id}" readonly="readonly">
+				<input type="text" name="nombre" th:field="*{nombre}">
+				<input type="text" name="apellido" th:field="*{apellido}">
+				<input type="text" name="email" th:field="*{email}">
+
+				<button>Editar</button>
+			</form>
+		</div>
+		<!-- end form -->
+
+	</div>
+	<!-- end container -->
+
+
+</body>
+</html>

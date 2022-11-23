@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>Página de login</title>
@@ -10,13 +10,13 @@
 
   <div class="grid">
 
-    <form action="https://httpbin.org/post" method="POST" class="form login">
+    <form method="post" action="/api/usuario/login" th:object="${loginRequest}" class="form login">
 
       <div class="form__field">
         <label for="login__username"><svg class="icon">
             <use xlink:href="#icon-user"></use>
-          </svg><span class="hidden">Username</span></label>
-        <input autocomplete="username" id="login__username" type="text" name="username" class="form__input" placeholder="Username" required>
+          </svg><span class="hidden">Email</span></label>
+        <input autocomplete="email" id="login_email" type="email" name="email" class="form__input" placeholder="ejemplo@gmail.com" required>
       </div>
 
       <div class="form__field">
@@ -27,12 +27,12 @@
       </div>
 
       <div class="form__field">
-        <input type="submit" value="Sign In">
+        <input type="submit" value="Ingresar">
       </div>
 
     </form>
 
-    <p class="text--center">Not a member? <a href="/registro">Sign up now</a> <svg class="icon">
+    <p class="text--center">¿No tienes cuenta? <a href="/registro">Regístrate ahora</a> <svg class="icon">
         <use xlink:href="/registro"></use>
       </svg></p>
 

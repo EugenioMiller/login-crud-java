@@ -13,6 +13,10 @@ public class UsuarioService {
 	@Autowired
 	private UsuarioRepository userRepo;
 	
+	public Usuario create (Usuario u) {
+		return userRepo.save(u);
+	}
+	
 	public Usuario registrarUsuario(String password, String email, String nombre) {
 		if(password != null && email !=null) {
 			Usuario temp = new Usuario();
@@ -24,9 +28,12 @@ public class UsuarioService {
 			return null;
 		}
 	}
-
 	
 	public Usuario autentica(String email, String password) {
 		return userRepo.findByEmailAndPassword(email, password);
+	}
+	
+	public Usuario guardar(Usuario u) {
+		return userRepo.save(u);
 	}
 }

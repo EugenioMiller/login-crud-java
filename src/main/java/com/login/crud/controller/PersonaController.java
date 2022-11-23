@@ -1,52 +1,52 @@
 package com.login.crud.controller;
 
-import java.net.URI;
+//import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+//import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.login.crud.model.Persona;
 import com.login.crud.service.PersonaService;
 
 
 
-@RestController
+@Controller
 @RequestMapping("/api/persona/")
 public class PersonaController {
 
 	@Autowired
 	private PersonaService personSer;
 	
-	@PostMapping
-	private ResponseEntity<Persona> guardar(@RequestBody Persona p){
+	@PostMapping("nueva")
+	private String guardar(Persona p){
 		Persona temp = personSer.create(p);
 		
-		try {
-			return ResponseEntity.created(new URI("/api/persona" + temp.getId())).body(temp);
-		}
-		catch (Exception e){
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-		}
+		return temp == null ? "error_page" : "redirect:/api/usuario/login";
+		
 	}
 	
-	@GetMapping
+	@RequestMapping("add")
+	public String formularioAgregar() {
+		return "form_agregar";
+	}
+	
+	@GetMapping("listar")
 	private ResponseEntity<List<Persona>> listarPersonas(){
 		return ResponseEntity.ok(personSer.getPersonas());
 	}
 	
 	
 	@DeleteMapping
-	private ResponseEntity<Void> eliminarPersona(@RequestBody Persona p){
+	private ResponseEntity<Void> eliminarPersona(Persona p){
 		personSer.delete(p);
 		return ResponseEntity.ok().build();
 	}

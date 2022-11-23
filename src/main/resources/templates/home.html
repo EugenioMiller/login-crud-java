@@ -3,10 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Home</title>
-	
+	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+	<link href="/css/home.css" rel="stylesheet" />
 </head>
 <body>
-<h1> Bienvenido al home <span th:text="${userLogin}"></span></h1>
-
+	<h1>Bienvenido <span th:text="${userLogin}"></span></h1>
+	<div class="frame">
+  		<a href="/api/persona/add"><button class="custom-btn btn-1">Agregar persona</button></a>
+  		<button class="custom-btn btn-1">Ver personas</button>
+  	</div>
 </body>
 </html>
